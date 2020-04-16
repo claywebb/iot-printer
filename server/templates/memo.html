@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div style="display: inline-block">
+        <h1>Daily Memo</h1>
+        <h2>{{ date }}</h2>
+        <h3>{{ city }}</h3>
+        <a href="https://www.weatherwx.com/forecast/mi/ann+arbor.html" target="_blank"><img style="width: 300px;" src="https://www.weatherwx.com/forecast.php?forecast=hourly&place=ann+arbor&state=mi&country=us&config=png&alt=hwitransparentbbb&hwvbg=transparent" alt="Click for the latest Ann Arbor weather forecast."></a>
+        <div>
+            <table style="width:100%">
+            {% for stock in stocks %}
+                <tr>
+                    <th><h2>{{ stock.symbol }} Price: </h2></th>
+                    <th><h2>${{ stock.price }}</h2></th> 
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <h2><u>News Headlines</u></h2>
+            <div style="text-align: left">
+            <ul>
+            {% for title in news %}
+                <li>{{ title }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <h2 style="font-family: Brush Script MT,cursive;">Have a Great Day!</h2>
+</body>
+</html>
